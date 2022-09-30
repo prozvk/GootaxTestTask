@@ -7,11 +7,8 @@
 
 import Foundation
 
-protocol ReusableItem {
-    static var reuseIdentifier: String { get }
-}
-
 protocol NavigationBarDelegate: class {
+    
     func presentAddressSearchController()
     
     func presentMenuController()

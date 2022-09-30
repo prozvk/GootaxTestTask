@@ -1,5 +1,5 @@
 //
-//  Static .swift
+//  StaticSearchTableViewCell.swift
 //  GootaxTestTask
 //
 //  Created by MacPro on 29.09.2022.

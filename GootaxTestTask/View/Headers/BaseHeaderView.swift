@@ -1,5 +1,5 @@
 //
-//  DiscountHeaderView.swift
+//  BaseHeaderView.swift
 //  GootaxTestTask
 //
 //  Created by MacPro on 29.09.2022.
@@ -22,11 +22,11 @@ class BaseHeaderView: UICollectionReusableView {
         label.sizeToFit()
         return label
     }()
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         addSubview(label)
-
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
@@ -34,23 +34,12 @@ class BaseHeaderView: UICollectionReusableView {
         label.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//
-//        addSubview(label)
-//
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-//        label.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//   }
-
-   required init?(coder aDecoder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-   }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

@@ -25,6 +25,16 @@ extension UIColor {
         return UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
 
     }
+    
+    static var discountHeaderViewBackground: UIColor {
+        return UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
+    }
+    
+    static var addButton: UIColor {
+        return UIColor(red: 1, green: 0.827, blue: 0.204, alpha: 1)
+    }
+    
+    static var oldPriceLabel: UIColor {
+        return UIColor(red: 1, green: 0.259, blue: 0.192, alpha: 1)
+    }
 }
-
-

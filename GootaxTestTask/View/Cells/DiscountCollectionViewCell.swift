@@ -1,5 +1,5 @@
 //
-//  SalesCollectionViewCell.swift
+//  DiscountCollectionViewCell.swift
 //  GootaxTestTask
 //
 //  Created by MacPro on 28.09.2022.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DiscountCollectionViewCell: UICollectionViewCell, ReusableItem {
+class DiscountCollectionViewCell: UICollectionViewCell {
     
     static var reuseIdentifier: String {
         return String(describing: DiscountCollectionViewCell.self)
@@ -48,7 +48,7 @@ class DiscountCollectionViewCell: UICollectionViewCell, ReusableItem {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor(red: 0.443, green: 0.443, blue: 0.443, alpha: 1)
+        label.textColor = UIColor.secondaryText1
         label.sizeToFit()
         return label
     }()
@@ -63,7 +63,7 @@ class DiscountCollectionViewCell: UICollectionViewCell, ReusableItem {
     let addButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 1, green: 0.827, blue: 0.204, alpha: 1)
+        button.backgroundColor = UIColor.addButton
         button.layer.cornerRadius = 15
         return button
     }()
@@ -74,7 +74,7 @@ class DiscountCollectionViewCell: UICollectionViewCell, ReusableItem {
         let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: "600 ₽")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor(red: 1, green: 0.259, blue: 0.192, alpha: 1)
+        label.textColor = UIColor.oldPriceLabel
         label.attributedText = attributeString
         return label
     }()
@@ -88,7 +88,7 @@ class DiscountCollectionViewCell: UICollectionViewCell, ReusableItem {
     }()
     
     override func layoutSubviews() {
-        backgroundColor = UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
+        backgroundColor = UIColor.discountHeaderViewBackground
         layer.cornerRadius = 12
     }
     

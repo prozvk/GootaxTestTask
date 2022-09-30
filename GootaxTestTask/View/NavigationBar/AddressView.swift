@@ -42,6 +42,7 @@ class AddressView: UIButton {
         addSubview(currentAddressLabel)
         addSubview(arrowImage)
         
+        
         NSLayoutConstraint.activate([
             deliveryLabel.leftAnchor.constraint(equalTo: leftAnchor),
             deliveryLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -57,7 +58,7 @@ class AddressView: UIButton {
 //            arrowImage.rightAnchor.constraint(equalTo: rightAnchor),
             arrowImage.heightAnchor.constraint(equalToConstant: 6),
             arrowImage.widthAnchor.constraint(equalToConstant: 10),
-            arrowImage.centerYAnchor.constraint(equalTo: currentAddressLabel.centerYAnchor)
+            arrowImage.centerYAnchor.constraint(equalTo: currentAddressLabel.centerYAnchor),
         ])
     }
     

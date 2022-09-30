@@ -11,10 +11,8 @@ enum TransitionDirection {
     case present, dismiss
 }
 
-/// Класс для обработки жеста открытия или закрытия
 class TransitionDriver: UIPercentDrivenInteractiveTransition {
     
-    // MARK: - Linking
     func link(to controller: UIViewController) {
         presentedController = controller
         
@@ -25,8 +23,6 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
     private weak var presentedController: UIViewController?
     private var panRecognizer: UIPanGestureRecognizer?
     
-    
-    // MARK: - Override
     override var wantsInteractiveStart: Bool {
         get {
             switch direction {
@@ -41,7 +37,6 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
         set { }
     }
     
-    // MARK: - Direction
     var direction: TransitionDirection = .present
     
     @objc private func handle(recognizer r: UIPanGestureRecognizer) {
@@ -54,7 +49,6 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
     }
 }
 
-// MARK: - Gesture Handling
 extension TransitionDriver {
     
     private func handlePresentation(recognizer r: UIPanGestureRecognizer) {
@@ -62,11 +56,11 @@ extension TransitionDriver {
         case .began:
             pause()
         case .changed:
-            let increment = -r.incrementToBottom(maxTranslation: maxTranslation)
+            let increment = r.incrementToLeft(maxTranslation: maxTranslation)
             update(percentComplete + increment)
             
         case .ended, .cancelled:
-            if r.isProjectedToDownHalf(maxTranslation: maxTranslation) {
+            if r.isEnoughToDismiss(maxTranslation: maxTranslation) {
                 cancel()
             } else {
                 finish()
@@ -82,23 +76,17 @@ extension TransitionDriver {
     
     private func handleDismiss(recognizer r: UIPanGestureRecognizer) {
         switch r.state {
-        //один самый первый раз
         case .began:
-            pause() // Pause allows to detect isRunning
-            
+            pause()
             if !isRunning {
-                presentedController?.dismiss(animated: true) // Start the new one
+                presentedController?.dismiss(animated: true)
             }
         
-        //каждый раз когда меняется
         case .changed:
-            update(percentComplete + r.incrementToBottom(maxTranslation: maxTranslation))
+            update(percentComplete + r.incrementToLeft(maxTranslation: maxTranslation))
             
-        //в конце тоже один раз, не важно наверху или внизу
         case .ended, .cancelled:
-            //если корость свайпа была достаточная то finish
-            if r.isProjectedToDownHalf(maxTranslation: maxTranslation) {
-                print("FINISH FINISH FINISH")
+            if r.isEnoughToDismiss(maxTranslation: maxTranslation) {
                 finish()
             } else {
                 cancel()
@@ -116,7 +104,6 @@ extension TransitionDriver {
         return presentedController?.view.frame.width ?? 0
     }
     
-    /// `pause()` before call `isRunning`
     private var isRunning: Bool {
         return percentComplete != 0
     }
@@ -124,16 +111,14 @@ extension TransitionDriver {
 
 private extension UIPanGestureRecognizer {
     
-    func isProjectedToDownHalf(maxTranslation: CGFloat) -> Bool {
+    func isEnoughToDismiss(maxTranslation: CGFloat) -> Bool {
         let endLocation = projectedLocation(decelerationRate: .fast)
-        print("endLocation", endLocation.y)
-        print("maxTranslation", maxTranslation)
         let isPresentationCompleted = endLocation.x < maxTranslation / 2
-        print("isPresentationCompleted", isPresentationCompleted)
         return isPresentationCompleted
     }
     
-    func incrementToBottom(maxTranslation: CGFloat) -> CGFloat {
+    // Completion percent
+    func incrementToLeft(maxTranslation: CGFloat) -> CGFloat {
         let translation = self.translation(in: view).x
         setTranslation(.zero, in: nil)
         

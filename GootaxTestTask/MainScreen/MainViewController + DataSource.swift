@@ -29,26 +29,30 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch sectionKind {
         case .promo:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PromoCollectionViewCell.reuseIdentifier, for: indexPath) as! PromoCollectionViewCell
-            cell.configure(model: PromoItem.debug()[indexPath.row])
+            let model = PromoItem.debug()[indexPath.row]
+            cell.titleLabel.text = model.name
+            cell.imageView.image = model.image
             return cell
             
         case.banners:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.reuseIdentifier, for: indexPath) as! BannerCollectionViewCell
-            cell.bannerImageView.image = UIImage(named: "banner") //PromoItem.debug()[indexPath.row].image
+            cell.bannerImageView.image = UIImage(named: "banner")
             return cell
             
         case .sales:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscountCollectionViewCell.reuseIdentifier, for: indexPath) as! DiscountCollectionViewCell
-            cell.imageView.image = SaleItem.debug()[indexPath.row].image
-            cell.titleLabel.text = SaleItem.debug()[indexPath.row].name
-            cell.weightLabel.text = SaleItem.debug()[indexPath.row].weight
+            let model = SaleItem.debug()[indexPath.row]
+            cell.imageView.image = model.image
+            cell.titleLabel.text = model.name
+            cell.weightLabel.text = model.weight
             return cell
             
         case .catalog:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatalogCollectionViewCell.reuseIdentifier, for: indexPath) as! CatalogCollectionViewCell
-            cell.titleLabel.text = CatalogItem.debug()[indexPath.row].name
-            cell.imageView.image = CatalogItem.debug()[indexPath.row].image
-            cell.backgroundColor = CatalogItem.debug()[indexPath.row].color
+            let model = CatalogItem.debug()[indexPath.row]
+            cell.titleLabel.text = model.name
+            cell.imageView.image = model.image
+            cell.backgroundColor = model.color
             return cell
         case .none:
             return collectionView.dequeueReusableCell(withReuseIdentifier: "reuseId", for: indexPath)

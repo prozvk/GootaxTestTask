@@ -25,23 +25,6 @@ struct PromoItem {
     }
 }
 
-//struct BannerItem {
-//    var name: String
-//    var image: UIImage
-//
-//    func debug() -> [BannerItem] {
-//        return [
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//            BannerItem(name: "Летний пикник", image: UIImage(named: "")!),
-//        ]
-//    }
-//}
-
 struct SaleItem {
     var name: String
     var image: UIImage

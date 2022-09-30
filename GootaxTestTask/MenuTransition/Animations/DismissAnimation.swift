@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Класс в котором описана анимация дизмисса
 class DismissAnimation: NSObject {
     let duration: TimeInterval = 0.3
     

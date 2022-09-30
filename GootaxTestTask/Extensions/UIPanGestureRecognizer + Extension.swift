@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 extension UIPanGestureRecognizer {
     func projectedLocation(decelerationRate: UIScrollView.DecelerationRate) -> CGPoint {
         let velocityOffset = velocity(in: view).projectedOffset(decelerationRate: .normal)
@@ -24,7 +23,7 @@ extension CGPoint {
     }
 }
 
-extension CGFloat { // Velocity value
+extension CGFloat {
     func projectedOffset(decelerationRate: UIScrollView.DecelerationRate) -> CGFloat {
         // Magic formula from WWDC
         let multiplier = 1 / (1 - decelerationRate.rawValue) / 1000

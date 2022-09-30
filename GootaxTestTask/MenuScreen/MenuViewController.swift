@@ -12,6 +12,8 @@ class MenuViewController: UIViewController {
     
     let data = ["Оплата", "Мои адреса", "Мои заказы", "Избранное", "Новости", "Купоны", "О нас", "Пригласить друзей", "Настройки"]
     
+    var userInfoView = UserInfoView()
+    
     var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect())
         tableView.backgroundColor = .systemBackground
@@ -23,8 +25,6 @@ class MenuViewController: UIViewController {
         return tableView
     }()
     
-    var userInfoView = UserInfoView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -34,6 +34,7 @@ class MenuViewController: UIViewController {
     
     func setupLayout() {
         view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 12
         view.addSubview(userInfoView)
         view.addSubview(tableView)
         

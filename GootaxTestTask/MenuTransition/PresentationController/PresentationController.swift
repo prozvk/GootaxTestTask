@@ -7,15 +7,13 @@
 
 import UIKit
 
-/// В этом классе мы обьявляем размер показываемого контроллера
 class PresentationController: UIPresentationController {
     
     override var shouldPresentInFullscreen: Bool {
         return false
     }
     
-    //задаем размер показываемой вью
-    //finalFrame в PresentAnimation
+    // finalFrame in PresentAnimation
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = containerView!.bounds
         return CGRect(x: 0, y: 0, width: bounds.width - 38, height: bounds.height)

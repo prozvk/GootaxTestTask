@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 protocol SearchViewProtocol: class {
-    func reloadData(addresses: [AddressSuggestions])
+    func reloadData(addresses: [Address])
 }
 
 class SearchViewController: UIViewController, SearchViewProtocol {
     
     var presenter: SearchPresenterProtocol!
     var tableView: UITableView!
-    var data: [AddressSuggestions] = []
-    var onChange: (AddressSuggestions) -> ()
+    var data: [Address] = []
+    var onChange: (Address) -> ()
     
     let searchImage: UIView = {
         let view = UIImageView(image: UIImage(named: "search"))
@@ -49,7 +49,7 @@ class SearchViewController: UIViewController, SearchViewProtocol {
         return view
     }()
     
-    init(onChange: @escaping (AddressSuggestions) -> ()) {
+    init(onChange: @escaping (Address) -> ()) {
         self.onChange = onChange
         
         super.init(nibName: nil, bundle: nil)
@@ -77,7 +77,7 @@ class SearchViewController: UIViewController, SearchViewProtocol {
         setupLayout()
     }
     
-    func reloadData(addresses: [AddressSuggestions]) {
+    func reloadData(addresses: [Address]) {
         data = addresses
         tableView.reloadData()
     }

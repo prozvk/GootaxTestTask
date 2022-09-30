@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CatalogCollectionViewCell: UICollectionViewCell, ReusableItem {
+class CatalogCollectionViewCell: UICollectionViewCell {
     
     static var reuseIdentifier: String {
         return String(describing: CatalogCollectionViewCell.self)
@@ -59,11 +59,10 @@ extension CatalogCollectionViewCell {
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -spacing),
             titleLabel.heightAnchor.constraint(equalToConstant: 30),
             
-            
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -spacing),
-            ])
+        ])
     }
 }

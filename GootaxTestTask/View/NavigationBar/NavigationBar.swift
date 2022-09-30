@@ -46,7 +46,6 @@ class NavigationBar: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        backgroundColor = .lightGray
         setupLayout()
     }
     
@@ -96,6 +95,4 @@ class NavigationBar: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }

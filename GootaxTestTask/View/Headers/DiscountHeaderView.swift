@@ -13,7 +13,7 @@ class DiscountHeaderView: BaseHeaderView {
     let view: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
+        view.backgroundColor = UIColor.discountHeaderViewBackground
         view.layer.cornerRadius = 12.5
         return view
     }()
@@ -29,7 +29,7 @@ class DiscountHeaderView: BaseHeaderView {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.backgroundColor = UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
+        label.backgroundColor = UIColor.discountHeaderViewBackground
         label.font = UIFont.systemFont(ofSize: 12)
         label.text = "Смотреть все"
         label.textAlignment = .center

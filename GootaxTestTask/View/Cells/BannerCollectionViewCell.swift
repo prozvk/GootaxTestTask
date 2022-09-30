@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BannerCollectionViewCell: UICollectionViewCell, ReusableItem {
+class BannerCollectionViewCell: UICollectionViewCell {
 
     static var reuseIdentifier: String {
         return String(describing: BannerCollectionViewCell.self)
@@ -47,6 +47,6 @@ extension BannerCollectionViewCell {
             bannerImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bannerImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             bannerImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-            ])
+        ])
     }
 }

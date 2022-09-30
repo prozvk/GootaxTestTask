@@ -16,7 +16,7 @@ class SearchPresenter: SearchPresenterProtocol {
     
     weak var view: SearchViewProtocol! = nil
     
-    var addresses: [AddressSuggestions] = [] {
+    var addresses: [Address] = [] {
         didSet {
             view.reloadData(addresses: addresses)
         }
@@ -27,13 +27,15 @@ class SearchPresenter: SearchPresenterProtocol {
     }
     
     func fetchAddresses(text: String) {
-        ApiManager.shared.suggestAddress(AddressSuggestionQuery(text)) { [weak self] (result) in
+        ApiManager.shared.suggestAddress(AddressQuery(text)) { [weak self] (result) in
             switch result {
             case .success(let response):
-                let addresses = response.suggestions
-                self?.addresses = addresses!
+                if let addresses = response.suggestions {
+                    self?.addresses = addresses
+                }
                 
-            case .failure(_):
+            case .failure(let error):
+                print(error)
                 break
             }
         }

@@ -10,10 +10,8 @@ import UIKit
 /// Animator класс
 class PanelTransition: NSObject, UIViewControllerTransitioningDelegate {
     
-    // MARK: - Presentation controller
     private let driver = TransitionDriver()
     
-    //Определяем контроллер между .from и .to
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         driver.link(to: presented)
         
@@ -23,7 +21,6 @@ class PanelTransition: NSObject, UIViewControllerTransitioningDelegate {
         return presentationController
     }
     
-    // MARK: - Animation
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PresentAnimation()
     }
@@ -32,7 +29,6 @@ class PanelTransition: NSObject, UIViewControllerTransitioningDelegate {
         return DismissAnimation()
     }
     
-    // MARK: - Interaction
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return driver
     }

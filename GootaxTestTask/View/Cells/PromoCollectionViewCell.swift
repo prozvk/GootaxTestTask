@@ -9,13 +9,6 @@ import Foundation
 import UIKit
 
 class PromoCollectionViewCell: UICollectionViewCell {
-    
-    func configure<T>(model: T) {
-        guard let model = model as? PromoItem else { return }
-        
-        titleLabel.text = model.name
-        imageView.image = model.image
-    }
 
     static var reuseIdentifier: String {
         return String(describing: PromoCollectionViewCell.self)
@@ -61,7 +54,7 @@ extension PromoCollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -spacing),
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: spacing),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -spacing),
-            ])
+        ])
     }
 }
 
