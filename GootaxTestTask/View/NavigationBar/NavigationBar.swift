@@ -10,13 +10,11 @@ import UIKit
 
 class NavigationBar: UIView {
     
-    var delegate: SearchDelegate!
+    var delegate: NavigationBarDelegate!
     
-    let button: UIButton = {
-        let button = UIButton()
+    let addressView: AddressView = {
+        let button = AddressView()
         button.addTarget(self, action: #selector(addressButtonDidTap), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Search", for: .normal)
         return button
     }()
     
@@ -34,21 +32,12 @@ class NavigationBar: UIView {
         return view
     }()
     
-    let searchLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = " Поиск товаров"
-        label.textColor = UIColor.searchBarText
-        label.layer.backgroundColor = UIColor.searchBar.cgColor
-        label.layer.cornerRadius = 4
-        return label
-    }()
-    
+    let searchBar = SearchBar()
+    let favofiteButton = FavoriteButton()
     
     
     @objc func addressButtonDidTap() {
-        delegate.present()
+        delegate.presentAddressSearchController()
     }
     
     @objc func menuButtonDidTap() {
@@ -57,7 +46,7 @@ class NavigationBar: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+//        backgroundColor = .lightGray
         setupLayout()
     }
     
@@ -71,24 +60,31 @@ class NavigationBar: UIView {
             menuButtonImage.heightAnchor.constraint(equalToConstant: 17)
         ])
         
-        addSubview(button)
         addSubview(menuButton)
-        addSubview(searchLabel)
+        addSubview(searchBar)
+        addSubview(addressView)
+        addSubview(favofiteButton)
         
         NSLayoutConstraint.activate([
             menuButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 18),
             menuButton.topAnchor.constraint(equalTo: topAnchor, constant: 36.5),
             menuButton.widthAnchor.constraint(equalToConstant: 19),
             menuButton.heightAnchor.constraint(equalToConstant: 17),
-
             
-            button.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            favofiteButton.widthAnchor.constraint(equalToConstant: 30),
+            favofiteButton.heightAnchor.constraint(equalToConstant: 30),
+            favofiteButton.topAnchor.constraint(equalTo: topAnchor, constant: 82),
+            favofiteButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
             
-            searchLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
-            searchLabel.topAnchor.constraint(equalTo: topAnchor, constant: 79),
-            searchLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -55),
-            searchLabel.heightAnchor.constraint(equalToConstant: 35),
+            searchBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
+            searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 79),
+            searchBar.rightAnchor.constraint(equalTo: favofiteButton.leftAnchor, constant: -10),
+            searchBar.heightAnchor.constraint(equalToConstant: 35),
+            
+            addressView.leftAnchor.constraint(equalTo: menuButton.rightAnchor, constant: 28),
+            addressView.topAnchor.constraint(equalTo: topAnchor, constant: 27.5),
+            addressView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
+            addressView.heightAnchor.constraint(equalToConstant: 35.5),
         ])
     }
     

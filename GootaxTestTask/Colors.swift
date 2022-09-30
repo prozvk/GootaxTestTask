@@ -17,7 +17,7 @@ extension UIColor {
         return UIColor(red: 0.754, green: 0.745, blue: 0.745, alpha: 1)
     }
     
-    static var searchBarText: UIColor {
+    static var secondaryText1: UIColor {
         return UIColor(red: 0.443, green: 0.443, blue: 0.443, alpha: 1)
     }
     
@@ -25,7 +25,6 @@ extension UIColor {
         return UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
 
     }
-    
 }
 
 

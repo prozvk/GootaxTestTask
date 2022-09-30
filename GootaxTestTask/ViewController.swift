@@ -247,10 +247,10 @@ extension MainViewController: UICollectionViewDelegate {
     
 }
 
-extension MainViewController: SearchDelegate {
-    func present() {
+extension MainViewController: NavigationBarDelegate {
+    func presentAddressSearchController() {
         let vc = SearchViewController { [weak self] (address) in
-            self?.navigationBar.button.setTitle(address.value, for: .normal)
+            self?.navigationBar.addressView.currentAddressLabel.text = address.data!.street! + " " + address.data!.house!
         }
         let presenter = SearchPresenter(view: vc)
         vc.presenter = presenter

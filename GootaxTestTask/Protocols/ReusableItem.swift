@@ -11,6 +11,7 @@ protocol ReusableItem {
     static var reuseIdentifier: String { get }
 }
 
-protocol SearchDelegate {
-    func present()
+protocol NavigationBarDelegate {
+    func presentAddressSearchController()
+    
 }
