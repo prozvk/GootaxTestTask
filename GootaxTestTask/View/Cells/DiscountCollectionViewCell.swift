@@ -17,9 +17,9 @@ class DiscountCollectionViewCell: UICollectionViewCell, ReusableItem {
     let saleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 10)
         label.layer.backgroundColor = UIColor.red.cgColor
-        label.layer.cornerRadius = 10
+        label.layer.cornerRadius = 7.5
         label.textColor = .white
         label.textAlignment = .center
         label.text = "-35%"
@@ -125,7 +125,7 @@ extension DiscountCollectionViewCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 101),
 
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
@@ -133,8 +133,8 @@ extension DiscountCollectionViewCell {
             
             saleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
             saleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: spacing),
-            saleLabel.heightAnchor.constraint(equalToConstant: 20),
-            saleLabel.widthAnchor.constraint(equalToConstant: 40),
+            saleLabel.heightAnchor.constraint(equalToConstant: 15),
+            saleLabel.widthAnchor.constraint(equalToConstant: 38),
             
             weightLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
             weightLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: spacing),
@@ -151,8 +151,8 @@ extension DiscountCollectionViewCell {
             
             oldPriceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
             oldPriceLabel.rightAnchor.constraint(equalTo: addButton.leftAnchor, constant: -spacing),
-            oldPriceLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor),
-            oldPriceLabel.heightAnchor.constraint(equalToConstant: 16),
+            oldPriceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19),
+            oldPriceLabel.heightAnchor.constraint(equalToConstant: 19),
         ])
     }
 }

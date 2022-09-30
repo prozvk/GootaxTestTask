@@ -28,7 +28,9 @@ class BaseHeaderView: UICollectionReusableView {
         addSubview(label)
 
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        
+        label.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+        label.topAnchor.constraint(equalTo: topAnchor).isActive = true
         label.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }

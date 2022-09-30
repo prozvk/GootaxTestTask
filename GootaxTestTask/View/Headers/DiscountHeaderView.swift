@@ -14,7 +14,7 @@ class DiscountHeaderView: BaseHeaderView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(red: 0.957, green: 0.957, blue: 0.957, alpha: 1)
-        view.layer.cornerRadius = 15
+        view.layer.cornerRadius = 12.5
         return view
     }()
     
@@ -44,25 +44,24 @@ class DiscountHeaderView: BaseHeaderView {
         view.addSubview(arrowView)
 
         NSLayoutConstraint.activate([
-            arrowView.topAnchor.constraint(equalTo: view.topAnchor, constant: spacing),
             arrowView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -spacing),
-            arrowView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -spacing),
-            arrowView.widthAnchor.constraint(equalToConstant: spacing),
-            arrowView.heightAnchor.constraint(equalTo: arrowView.widthAnchor),
+            arrowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            arrowView.widthAnchor.constraint(equalToConstant: 3),
+            arrowView.heightAnchor.constraint(equalToConstant: spacing),
 
-            button.leftAnchor.constraint(equalTo: view.leftAnchor,constant: spacing),
-            button.topAnchor.constraint(equalTo: view.topAnchor),
-            button.rightAnchor.constraint(equalTo: arrowView.leftAnchor, constant: -spacing/2),
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            button.leftAnchor.constraint(equalTo: view.leftAnchor, constant: spacing),
+            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 3),
+            button.rightAnchor.constraint(equalTo: arrowView.leftAnchor, constant: -3),
+            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -3),
         ])
         
         addSubview(view)
-//        view.widthAnchor.constraint(equalToConstant: 103).isActive = true
-//        view.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        view.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
 
+        NSLayoutConstraint.activate([
+            view.rightAnchor.constraint(equalTo: rightAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            view.topAnchor.constraint(equalTo: topAnchor)
+        ])
     }
 
     override init(frame: CGRect) {

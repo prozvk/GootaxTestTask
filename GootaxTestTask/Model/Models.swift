@@ -69,15 +69,15 @@ struct CatalogItem {
     
     static func debug() -> [CatalogItem] {
         return [
-            CatalogItem(name: "Наборы", image: UIImage(named: "item")!, color: UIColor(red: 1, green: 0.757, blue: 0.714, alpha: 1)),
-            CatalogItem(name: "Пицца", image: UIImage(named: "item")!, color: UIColor(red: 1, green: 0.882, blue: 0.678, alpha: 1)),
-            CatalogItem(name: "Паста", image: UIImage(named: "item")!, color: UIColor(red: 0.729, green: 0.722, blue: 0.573, alpha: 1)),
-            CatalogItem(name: "Ризотто", image: UIImage(named: "item")!, color: UIColor(red: 0.769, green: 0.827, blue: 0.808, alpha: 1)),
-            CatalogItem(name: "Салаты", image: UIImage(named: "item")!, color: UIColor(red: 0.725, green: 0.769, blue: 0.784, alpha: 1)),
-            CatalogItem(name: "Полуфабрикаты", image: UIImage(named: "item")!, color: UIColor(red: 0.639, green: 0.682, blue: 0.616, alpha: 1)),
-            CatalogItem(name: "Десерты", image: UIImage(named: "item")!, color: UIColor(red: 1, green: 0.903, blue: 0.714, alpha: 1)),
-            CatalogItem(name: "Добавки", image: UIImage(named: "item")!, color: UIColor(red: 0.827, green: 0.769, blue: 0.769, alpha: 1)),
-            CatalogItem(name: "Напитки", image: UIImage(named: "item")!, color: UIColor(red: 1, green: 0.833, blue: 0.678, alpha: 1))
+            CatalogItem(name: "Наборы", image: UIImage(named: "sets")!, color: UIColor(red: 1, green: 0.757, blue: 0.714, alpha: 1)),
+            CatalogItem(name: "Пицца", image: UIImage(named: "pizzas")!, color: UIColor(red: 1, green: 0.882, blue: 0.678, alpha: 1)),
+            CatalogItem(name: "Паста", image: UIImage(named: "pasta")!, color: UIColor(red: 0.729, green: 0.722, blue: 0.573, alpha: 1)),
+            CatalogItem(name: "Ризотто", image: UIImage(named: "risotto")!, color: UIColor(red: 0.769, green: 0.827, blue: 0.808, alpha: 1)),
+            CatalogItem(name: "Салаты", image: UIImage(named: "salads")!, color: UIColor(red: 0.725, green: 0.769, blue: 0.784, alpha: 1)),
+            CatalogItem(name: "Полуфабрикаты", image: UIImage(named: "polu")!, color: UIColor(red: 0.639, green: 0.682, blue: 0.616, alpha: 1)),
+            CatalogItem(name: "Десерты", image: UIImage(named: "desert")!, color: UIColor(red: 1, green: 0.903, blue: 0.714, alpha: 1)),
+            CatalogItem(name: "Добавки", image: UIImage(named: "adds")!, color: UIColor(red: 0.827, green: 0.769, blue: 0.769, alpha: 1)),
+            CatalogItem(name: "Напитки", image: UIImage(named: "drinks")!, color: UIColor(red: 1, green: 0.833, blue: 0.678, alpha: 1))
         ]
     }
 }

@@ -52,18 +52,6 @@ extension CatalogCollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
 
-//        let spacing = CGFloat(5)
-//        NSLayoutConstraint.activate([
-//            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
-//            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacing),
-//            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: spacing),
-////            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
-//
-//            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing),
-//            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
-//            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacing),
-//            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -spacing)
-//            ])
         let spacing = CGFloat(5)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
@@ -72,10 +60,9 @@ extension CatalogCollectionViewCell {
             titleLabel.heightAnchor.constraint(equalToConstant: 30),
             
             
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacing),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: spacing),
-//            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -spacing),
             ])
     }

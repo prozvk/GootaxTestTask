@@ -31,7 +31,6 @@ class PromoCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = .center
         return label
@@ -48,20 +47,20 @@ class PromoCollectionViewCell: UICollectionViewCell {
 
 extension PromoCollectionViewCell {
     func setupLayout() {
-        contentView.addSubview(imageView)
-        contentView.addSubview(titleLabel)
+        addSubview(imageView)
+        addSubview(titleLabel)
 
-        let spacing = CGFloat(10)
+        let spacing = CGFloat(8)
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: spacing),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacing),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: spacing),
-            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, constant: -spacing),
-
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            titleLabel.heightAnchor.constraint(equalToConstant: 15),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: spacing),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -spacing),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: spacing),
+            imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -spacing),
             ])
     }
 }

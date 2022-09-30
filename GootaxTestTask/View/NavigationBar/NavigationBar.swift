@@ -10,7 +10,7 @@ import UIKit
 
 class NavigationBar: UIView {
     
-    var delegate: NavigationBarDelegate!
+    weak var delegate: NavigationBarDelegate!
     
     let addressView: AddressView = {
         let button = AddressView()
@@ -41,7 +41,7 @@ class NavigationBar: UIView {
     }
     
     @objc func menuButtonDidTap() {
-        print("OPEN MENU")
+        delegate.presentMenuController()
     }
     
     override func layoutSubviews() {
@@ -66,10 +66,10 @@ class NavigationBar: UIView {
         addSubview(favofiteButton)
         
         NSLayoutConstraint.activate([
-            menuButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 18),
-            menuButton.topAnchor.constraint(equalTo: topAnchor, constant: 36.5),
-            menuButton.widthAnchor.constraint(equalToConstant: 19),
-            menuButton.heightAnchor.constraint(equalToConstant: 17),
+            menuButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            menuButton.topAnchor.constraint(equalTo: topAnchor, constant: 27.5),
+            menuButton.widthAnchor.constraint(equalToConstant: 30),
+            menuButton.heightAnchor.constraint(equalToConstant: 30),
             
             favofiteButton.widthAnchor.constraint(equalToConstant: 30),
             favofiteButton.heightAnchor.constraint(equalToConstant: 30),
