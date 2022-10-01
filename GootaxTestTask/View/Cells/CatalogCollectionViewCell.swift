@@ -35,7 +35,21 @@ class CatalogCollectionViewCell: UICollectionViewCell {
     }()
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         layer.cornerRadius = 12
+        setupLayout()
+    }
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        
+        setupLayout()
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        
+        setupLayout()
     }
 
     override init(frame: CGRect) {

@@ -122,6 +122,7 @@
 		B63E7B7A28E473F500448A2C /* GootaxTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				B6740D3028E737D900EEB28B /* Services */,
 				B673835D28E6FC66007FD9D8 /* MenuTransition */,
 				B673835228E6CC56007FD9D8 /* Extensions */,
 				B67AF67B28E4CE1A00BC24EE /* Protocols */,
@@ -134,7 +135,6 @@
 				B63E7B8428E473F800448A2C /* Assets.xcassets */,
 				B63E7B8628E473F800448A2C /* LaunchScreen.storyboard */,
 				B63E7B8928E473F800448A2C /* Info.plist */,
-				B6C5AADD28E600B3008FDDEF /* ApiManager.swift */,
 			);
 			path = GootaxTestTask;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 		B63E7BA528E4981A00448A2C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B673837728E70A87007FD9D8 /* UserInfoView.swift */,
+				B6740D2E28E737BB00EEB28B /* Menu */,
 				B67AF68A28E5A33300BC24EE /* NavigationBar */,
 				B67AF68228E561C800BC24EE /* Headers */,
 				B63E7BA628E4982700448A2C /* Cells */,
@@ -237,6 +237,22 @@
 				B63E7B7D28E473F500448A2C /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		B6740D2E28E737BB00EEB28B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B673837728E70A87007FD9D8 /* UserInfoView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		B6740D3028E737D900EEB28B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B6C5AADD28E600B3008FDDEF /* ApiManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B67AF67B28E4CE1A00BC24EE /* Protocols */ = {
