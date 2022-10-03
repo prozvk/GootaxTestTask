@@ -9,13 +9,8 @@ import UIKit
 
 extension MainViewController: NavigationBarDelegate {
     func presentAddressSearchController() {
-        let vc = SearchViewController { [weak self] (address) in
-            var shortAddress = address.data?.street ?? ""
-            shortAddress += " "
-            shortAddress += address.data?.house ?? ""
-            
-            self?.navigationBar.address = shortAddress
-        }
+        let vc = SearchViewController()
+        vc.delegate = self
         let presenter = SearchPresenter(view: vc)
         vc.presenter = presenter
         present(vc, animated: true)

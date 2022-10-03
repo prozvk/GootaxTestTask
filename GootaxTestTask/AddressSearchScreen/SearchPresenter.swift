@@ -14,11 +14,11 @@ protocol SearchPresenterProtocol: class {
 
 class SearchPresenter: SearchPresenterProtocol {
     
-    weak var view: SearchViewProtocol! = nil
+    weak var view: SearchViewProtocol?
     
     var addresses: [Address] = [] {
         didSet {
-            view.reloadData(addresses: addresses)
+            view?.reloadData(addresses: addresses)
         }
     }
     

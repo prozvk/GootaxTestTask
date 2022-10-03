@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 
 class PromoCollectionViewCell: UICollectionViewCell {
-
-    static var reuseIdentifier: String {
-        return String(describing: PromoCollectionViewCell.self)
-    }
     
     let imageView: UIImageView = {
         let image = UIImageView()
@@ -33,6 +29,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setupLayout()
     }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }

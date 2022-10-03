@@ -10,10 +10,6 @@ import UIKit
 
 class CatalogCollectionViewCell: UICollectionViewCell {
     
-    static var reuseIdentifier: String {
-        return String(describing: CatalogCollectionViewCell.self)
-    }
-    
     let imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false

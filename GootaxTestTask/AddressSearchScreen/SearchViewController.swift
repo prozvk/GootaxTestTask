@@ -8,32 +8,46 @@
 import Foundation
 import UIKit
 
-protocol SearchViewProtocol: class {
+protocol SearchViewDelegate: AnyObject {
+    func selectedAddress(address: Address)
+}
+
+protocol SearchViewProtocol: AnyObject {
     func reloadData(addresses: [Address])
 }
 
 class SearchViewController: UIViewController, SearchViewProtocol {
     
-    var presenter: SearchPresenterProtocol!
-    var tableView: UITableView!
+    var presenter: SearchPresenterProtocol?
     var data: [Address] = []
-    var onChange: (Address) -> ()
+    weak var delegate: SearchViewDelegate?
     
-    let searchImage: UIView = {
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
+        tableView.register(StaticSearchTableViewCell.self, forCellReuseIdentifier: StaticSearchTableViewCell.reuseIdentifier)
+        return tableView
+    }()
+    
+    private lazy var searchImage: UIView = {
         let view = UIImageView(image: UIImage(named: "search"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    let deleteImage: UIView = {
+    private lazy var deleteImage: UIView = {
         let view = UIImageView(image: UIImage(named: "delete"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    let textfield: UITextField = {
+    private lazy var textfield: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Введите адрес"
         tf.font?.withSize(17)
@@ -42,16 +56,14 @@ class SearchViewController: UIViewController, SearchViewProtocol {
         return tf
     }()
     
-    let separatorView: UIView = {
+    private lazy var separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.separatorColor
         return view
     }()
     
-    init(onChange: @escaping (Address) -> ()) {
-        self.onChange = onChange
-        
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,17 +73,6 @@ class SearchViewController: UIViewController, SearchViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .none
-
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
-        tableView.register(StaticSearchTableViewCell.self, forCellReuseIdentifier: StaticSearchTableViewCell.reuseIdentifier)
-        
         view.backgroundColor = .white
         
         setupLayout()
@@ -82,9 +83,9 @@ class SearchViewController: UIViewController, SearchViewProtocol {
         tableView.reloadData()
     }
     
-    @objc func textFieldDidChange(_ textView: UITextView) {
+    @objc private func textFieldDidChange(_ textView: UITextView) {
         if textView.text.count > 1 || textView.text.count == 0 {
-            presenter.fetchAddresses(text: textView.text)
+            presenter?.fetchAddresses(text: textView.text)
         }
     }
 }

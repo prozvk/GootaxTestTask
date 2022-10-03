@@ -10,17 +10,19 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    let data = ["Оплата", "Мои адреса", "Мои заказы", "Избранное", "Новости", "Купоны", "О нас", "Пригласить друзей", "Настройки"]
+    private let data = ["Оплата", "Мои адреса", "Мои заказы", "Избранное", "Новости", "Купоны", "О нас", "Пригласить друзей", "Настройки"]
     
-    lazy var userInfoView: UserInfoView = {
+    private lazy var userInfoView: UserInfoView = {
         let view = UserInfoView()
         view.image = UIImage(named: "user")!
         view.name = "Иван Иванов"
         view.phoneNumber = "+7 800 555-35-35"
+        view.layer.cornerRadius = 12
+        view.layer.maskedCorners = [.layerMaxXMinYCorner]
         return view
     }()
     
-    var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect())
         tableView.backgroundColor = .systemBackground
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "menuCellId")
@@ -28,6 +30,8 @@ class MenuViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
+        tableView.layer.cornerRadius = 12
+        tableView.layer.maskedCorners = [.layerMaxXMaxYCorner]
         return tableView
     }()
     
@@ -38,18 +42,12 @@ class MenuViewController: UIViewController {
         setupLayout()
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 12
         view.addSubview(userInfoView)
         view.addSubview(tableView)
-        
-        userInfoView.layer.cornerRadius = 12
-        userInfoView.layer.maskedCorners = [.layerMaxXMinYCorner]
-        
-        tableView.layer.cornerRadius = 12
-        tableView.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        
+
         NSLayoutConstraint.activate([
             userInfoView.topAnchor.constraint(equalTo: view.topAnchor),
             userInfoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -71,23 +69,21 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row{
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.reuseIdentifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.reuseIdentifier) as! MenuTableViewCell
+            cell.numberOfCard = "Карта *4567"
+            cell.title = "Оплата"
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "menuCellId")! as UITableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "menuCellId")!
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
             cell.textLabel?.text = data[indexPath.row]
             return cell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
     }
 }

@@ -9,24 +9,30 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
     
-    static var reuseIdentifier: String {
-        return String(describing: MenuTableViewCell.self)
+    public var title: String = "" {
+        didSet {
+            titleLabel.text = title
+        }
     }
     
-    let titleLabel: UILabel = {
+    public var numberOfCard: String = "" {
+        didSet {
+            cardNumber.text = numberOfCard
+        }
+    }
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.text = "Оплата"
         return label
     }()
     
-    let cardNumber: UILabel = {
+    private lazy var cardNumber: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.secondaryText1
-        label.text = "Карта *4567"
         return label
     }()
     
@@ -46,6 +52,8 @@ class MenuTableViewCell: UITableViewCell {
             cardNumber.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             cardNumber.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             cardNumber.heightAnchor.constraint(equalToConstant: 20),
+            
+            heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     

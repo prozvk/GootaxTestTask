@@ -14,11 +14,19 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 3:
-            return 9
-        default:
-            return 7
+        let sectionKind = SectionLayoutKind(rawValue: section)
+        
+        switch sectionKind {
+        case .promo:
+            return PromoItem.debug().count
+        case .banners:
+            return PromoItem.debug().count
+        case .sales:
+            return SaleItem.debug().count
+        case .catalog:
+            return CatalogItem.debug().count
+        case .none:
+            return 0
         }
     }
     
@@ -55,7 +63,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.backgroundColor = model.color
             return cell
         case .none:
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "reuseId", for: indexPath)
+            return UICollectionViewCell()
         }
     }
     
@@ -63,16 +71,15 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 2 {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DiscountHeaderView.reuseIdentifier, for: indexPath) as! DiscountHeaderView
-            header.label.text = "Акции"
+            header.title = "Акции"
             return header
         }
         else if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 3 {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BaseHeaderView.reuseIdentifier, for: indexPath) as! BaseHeaderView
-            header.label.text = "Каталог"
+            header.title = "Каталог"
             return header
         } else {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "reuseIdentifier", for: indexPath)
-            return header
+            return UICollectionReusableView()
         }
     }
 }

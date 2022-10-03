@@ -8,11 +8,7 @@
 import UIKit
 
 class StaticSearchTableViewCell: UITableViewCell {
-    
-    static var reuseIdentifier: String {
-        return String(describing: StaticSearchTableViewCell.self)
-    }
-    
+
     let titleAddressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

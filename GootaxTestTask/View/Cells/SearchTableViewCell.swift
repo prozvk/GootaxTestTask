@@ -5,14 +5,9 @@
 //  Created by MacPro on 29.09.2022.
 //
 
-import Foundation
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
-    
-    static var reuseIdentifier: String {
-        return String(describing: SearchTableViewCell.self)
-    }
     
     let titleAddressLabel: UILabel = {
         let label = UILabel()

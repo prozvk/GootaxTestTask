@@ -11,7 +11,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != 0 {
             let address = data[indexPath.row - 1]
-            onChange(address)
+            delegate?.selectedAddress(address: address)
         }
         dismiss(animated: true)
     }

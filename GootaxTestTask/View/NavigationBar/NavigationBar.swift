@@ -11,6 +11,7 @@ import UIKit
 class NavigationBar: UIView {
     
     public weak var delegate: NavigationBarDelegate?
+    
     public var address: String = "" {
         didSet {
             addressView.address = address

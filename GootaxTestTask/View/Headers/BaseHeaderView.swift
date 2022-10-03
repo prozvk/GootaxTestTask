@@ -14,7 +14,13 @@ class BaseHeaderView: UICollectionReusableView {
         return String(describing: self)
     }
     
-    var label: UILabel = {
+    public var title: String = "" {
+        didSet {
+            label.text = title
+        }
+    }
+    
+    private lazy var label: UILabel = {
         let label: UILabel = UILabel()
         label.textColor = .black
         label.backgroundColor = .clear
@@ -23,8 +29,13 @@ class BaseHeaderView: UICollectionReusableView {
         return label
     }()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupLayout()
+    }
+    
+    private func setupLayout() {
         addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,10 +44,6 @@ class BaseHeaderView: UICollectionReusableView {
         label.topAnchor.constraint(equalTo: topAnchor).isActive = true
         label.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -10,7 +10,7 @@ import UIKit
 
 class DiscountHeaderView: BaseHeaderView {
     
-    let view: UIView = {
+    private lazy var view: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.discountHeaderViewBackground
@@ -18,14 +18,14 @@ class DiscountHeaderView: BaseHeaderView {
         return view
     }()
     
-    let arrowView: UIView = {
+    private lazy var arrowView: UIView = {
         let view = UIImageView(image: UIImage(named: "arrow"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    var button: UILabel = {
+    private lazy var button: UILabel = {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -36,9 +36,8 @@ class DiscountHeaderView: BaseHeaderView {
         return label
     }()
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    
+    private func setupLayout() {
         let spacing: CGFloat = 10
         view.addSubview(button)
         view.addSubview(arrowView)
@@ -63,9 +62,11 @@ class DiscountHeaderView: BaseHeaderView {
             view.topAnchor.constraint(equalTo: topAnchor)
         ])
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setupLayout()
     }
 
    required init?(coder aDecoder: NSCoder) {

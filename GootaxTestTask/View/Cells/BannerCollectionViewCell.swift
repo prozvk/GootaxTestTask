@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 
 class BannerCollectionViewCell: UICollectionViewCell {
-
-    static var reuseIdentifier: String {
-        return String(describing: BannerCollectionViewCell.self)
-    }
     
     let bannerImageView: UIImageView = {
         let image = UIImageView()
@@ -23,16 +19,14 @@ class BannerCollectionViewCell: UICollectionViewCell {
         image.clipsToBounds = true
         return image
     }()
-    
-    override func layoutSubviews() {
-        contentView.backgroundColor = .gray
-        contentView.layer.cornerRadius = 12
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .gray
+        contentView.layer.cornerRadius = 12
         setupLayout()
     }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }

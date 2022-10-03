@@ -10,10 +10,6 @@ import UIKit
 
 class DiscountCollectionViewCell: UICollectionViewCell {
     
-    static var reuseIdentifier: String {
-        return String(describing: DiscountCollectionViewCell.self)
-    }
-    
     let saleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
