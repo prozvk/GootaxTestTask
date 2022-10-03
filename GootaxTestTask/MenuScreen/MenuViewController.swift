@@ -12,7 +12,13 @@ class MenuViewController: UIViewController {
     
     let data = ["Оплата", "Мои адреса", "Мои заказы", "Избранное", "Новости", "Купоны", "О нас", "Пригласить друзей", "Настройки"]
     
-    var userInfoView = UserInfoView()
+    lazy var userInfoView: UserInfoView = {
+        let view = UserInfoView()
+        view.image = UIImage(named: "user")!
+        view.name = "Иван Иванов"
+        view.phoneNumber = "+7 800 555-35-35"
+        return view
+    }()
     
     var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect())

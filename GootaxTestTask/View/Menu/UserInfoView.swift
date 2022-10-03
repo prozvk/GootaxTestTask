@@ -9,8 +9,26 @@ import UIKit
 
 class UserInfoView: UIView {
     
-    let avatarView: UIImageView = {
-        let view = UIImageView(image: UIImage(named: "user"))
+    public var image: UIImage = UIImage() {
+        didSet {
+            avatarView.image = image
+        }
+    }
+    
+    public var name: String = "" {
+        didSet {
+            nameLabel.text = name
+        }
+    }
+    
+    public var phoneNumber: String = "" {
+        didSet {
+            phoneNumberLabel.text = phoneNumber
+        }
+    }
+    
+    private lazy var avatarView: UIImageView = {
+        let view = UIImageView(image: image)
         view.layer.cornerRadius = 28
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -19,42 +37,45 @@ class UserInfoView: UIView {
         return view
     }()
     
-    let nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.text = "Иван Иванов"
+        label.text = name
         return label
     }()
     
-    let phoneNumberLabel: UILabel = {
+    private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.text = "+7 912 513-32-20"
+        label.text = phoneNumber
         return label
     }()
     
-    let separatorView: UIView = {
+    private lazy var separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.separatorColor
         return view
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         backgroundColor = .systemBackground
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
         setupLayout()
+        activateConstraints()
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         addSubview(avatarView)
         addSubview(nameLabel)
         addSubview(phoneNumberLabel)
         addSubview(separatorView)
-        
+    }
+    
+    private func activateConstraints() {
         NSLayoutConstraint.activate([
             avatarView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             avatarView.topAnchor.constraint(equalTo: topAnchor, constant: 35),

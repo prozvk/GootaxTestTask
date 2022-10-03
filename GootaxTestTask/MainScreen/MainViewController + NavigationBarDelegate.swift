@@ -14,7 +14,7 @@ extension MainViewController: NavigationBarDelegate {
             shortAddress += " "
             shortAddress += address.data?.house ?? ""
             
-            self?.navigationBar.addressView.currentAddressLabel.text = shortAddress
+            self?.navigationBar.address = shortAddress
         }
         let presenter = SearchPresenter(view: vc)
         vc.presenter = presenter

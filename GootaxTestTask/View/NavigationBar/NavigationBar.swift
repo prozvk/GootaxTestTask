@@ -10,47 +10,57 @@ import UIKit
 
 class NavigationBar: UIView {
     
-    weak var delegate: NavigationBarDelegate!
+    public weak var delegate: NavigationBarDelegate?
+    public var address: String = "" {
+        didSet {
+            addressView.address = address
+        }
+    }
+   
+    private lazy var favofiteButton = FavoriteButton()
     
-    let addressView: AddressView = {
+    private lazy var searchBar: SearchBar = {
+        let view = SearchBar()
+        view.placeholder = "Поиск Товаров"
+        return view
+    }()
+    
+    private lazy var addressView: AddressView = {
         let button = AddressView()
         button.addTarget(self, action: #selector(addressButtonDidTap), for: .touchUpInside)
         return button
     }()
     
-    let menuButton: UIButton = {
+    private lazy var menuButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(menuButtonDidTap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    let menuButtonImage: UIView = {
+    private lazy var menuButtonImage: UIView = {
         let view = UIImageView(image: UIImage(named: "menuButton"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    let searchBar = SearchBar()
-    let favofiteButton = FavoriteButton()
-    
-    
-    @objc func addressButtonDidTap() {
-        delegate.presentAddressSearchController()
+    @objc private func addressButtonDidTap() {
+        delegate?.presentAddressSearchController()
     }
     
-    @objc func menuButtonDidTap() {
-        delegate.presentMenuController()
+    @objc private func menuButtonDidTap() {
+        delegate?.presentMenuController()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .systemBackground
         setupLayout()
     }
     
-    func setupLayout() {
-        
+    private func setupLayout() {
+    
         menuButton.addSubview(menuButtonImage)
         NSLayoutConstraint.activate([
             menuButtonImage.centerYAnchor.constraint(equalTo: menuButton.centerYAnchor),
@@ -85,11 +95,6 @@ class NavigationBar: UIView {
             addressView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
             addressView.heightAnchor.constraint(equalToConstant: 35.5),
         ])
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

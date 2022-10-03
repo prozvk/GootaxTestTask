@@ -9,7 +9,7 @@ import UIKit
 
 class FavoriteButton: UIButton {
     
-    let favoriteButtonImage: UIView = {
+    private lazy var favoriteButtonImage: UIView = {
         let view = UIImageView(image: UIImage(named: "favoriteButton"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit

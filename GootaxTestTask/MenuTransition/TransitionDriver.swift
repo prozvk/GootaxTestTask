@@ -13,15 +13,19 @@ enum TransitionDirection {
 
 class TransitionDriver: UIPercentDrivenInteractiveTransition {
     
-    func link(to controller: UIViewController) {
-        presentedController = controller
-        
-        panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handle(recognizer:)))
-        presentedController?.view.addGestureRecognizer(panRecognizer!)
+    private weak var presentedController: UIViewController?
+    
+    private var panRecognizer: UIPanGestureRecognizer?
+    
+    var direction: TransitionDirection = .present
+    
+    var maxTranslation: CGFloat {
+        return presentedController?.view.frame.width ?? 0
     }
     
-    private weak var presentedController: UIViewController?
-    private var panRecognizer: UIPanGestureRecognizer?
+    private var isRunning: Bool {
+        return percentComplete != 0
+    }
     
     override var wantsInteractiveStart: Bool {
         get {
@@ -37,7 +41,12 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
         set { }
     }
     
-    var direction: TransitionDirection = .present
+    func link(to controller: UIViewController) {
+        presentedController = controller
+        
+        panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handle(recognizer:)))
+        presentedController?.view.addGestureRecognizer(panRecognizer!)
+    }
     
     @objc private func handle(recognizer r: UIPanGestureRecognizer) {
         switch direction {
@@ -98,14 +107,6 @@ extension TransitionDriver {
         default:
             break
         }
-    }
-    
-    var maxTranslation: CGFloat {
-        return presentedController?.view.frame.width ?? 0
-    }
-    
-    private var isRunning: Bool {
-        return percentComplete != 0
     }
 }
 

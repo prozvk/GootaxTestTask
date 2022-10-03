@@ -9,7 +9,13 @@ import UIKit
 
 class AddressView: UIButton {
     
-    let deliveryLabel: UILabel = {
+    public var address: String = "" {
+        didSet {
+            currentAddressLabel.text = address
+        }
+    }
+    
+    private lazy var deliveryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
@@ -18,15 +24,15 @@ class AddressView: UIButton {
         return label
     }()
     
-    let currentAddressLabel: UILabel = {
+    private lazy var currentAddressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "Воткинское шоссе, 12"
+        label.text = "Выбрать адрес"
         return label
     }()
     
-    let arrowImage: UIView = {
+    private lazy var arrowImage: UIView = {
         let view = UIImageView(image: UIImage(named: "downArrow"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
@@ -35,7 +41,7 @@ class AddressView: UIButton {
     
     
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(deliveryLabel)
@@ -50,12 +56,10 @@ class AddressView: UIButton {
             deliveryLabel.heightAnchor.constraint(equalToConstant: 20),
             
             currentAddressLabel.leftAnchor.constraint(equalTo: leftAnchor),
-//            currentAddressLabel.rightAnchor.constraint(equalTo: rightAnchor),
             currentAddressLabel.heightAnchor.constraint(equalToConstant: 20),
             currentAddressLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             arrowImage.leftAnchor.constraint(equalTo: currentAddressLabel.rightAnchor, constant: 6),
-//            arrowImage.rightAnchor.constraint(equalTo: rightAnchor),
             arrowImage.heightAnchor.constraint(equalToConstant: 6),
             arrowImage.widthAnchor.constraint(equalToConstant: 10),
             arrowImage.centerYAnchor.constraint(equalTo: currentAddressLabel.centerYAnchor),

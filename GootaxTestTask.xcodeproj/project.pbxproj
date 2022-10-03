@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B63A6DBA28EB0E86001A14B5 /* CGPoint + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A6DB928EB0E86001A14B5 /* CGPoint + Extension.swift */; };
+		B63A6DBD28EB0E97001A14B5 /* CGFloat + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A6DBC28EB0E97001A14B5 /* CGFloat + Extension.swift */; };
 		B63E7B7C28E473F500448A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E7B7B28E473F500448A2C /* AppDelegate.swift */; };
 		B63E7B7E28E473F500448A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E7B7D28E473F500448A2C /* SceneDelegate.swift */; };
 		B63E7B8028E473F500448A2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E7B7F28E473F500448A2C /* ViewController.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B63A6DB928EB0E86001A14B5 /* CGPoint + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint + Extension.swift"; sourceTree = "<group>"; };
+		B63A6DBC28EB0E97001A14B5 /* CGFloat + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat + Extension.swift"; sourceTree = "<group>"; };
 		B63E7B7828E473F500448A2C /* GootaxTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GootaxTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63E7B7B28E473F500448A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B63E7B7D28E473F500448A2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				B673837328E6FE4E007FD9D8 /* UIPanGestureRecognizer + Extension.swift */,
+				B63A6DB928EB0E86001A14B5 /* CGPoint + Extension.swift */,
+				B63A6DBC28EB0E97001A14B5 /* CGFloat + Extension.swift */,
 				B6C5AAE328E61423008FDDEF /* Colors.swift */,
 			);
 			path = Extensions;
@@ -375,8 +381,10 @@
 				B673837B28E715E4007FD9D8 /* MenuTableViewCell.swift in Sources */,
 				B67AF68C28E5A34900BC24EE /* NavigationBar.swift in Sources */,
 				B673835F28E6FCE4007FD9D8 /* TransitionController.swift in Sources */,
+				B63A6DBD28EB0E97001A14B5 /* CGFloat + Extension.swift in Sources */,
 				B63E7B7C28E473F500448A2C /* AppDelegate.swift in Sources */,
 				B673836B28E6FD78007FD9D8 /* DimmPresentationController.swift in Sources */,
+				B63A6DBA28EB0E86001A14B5 /* CGPoint + Extension.swift in Sources */,
 				B673837E28E71D27007FD9D8 /* MainViewController + DataSource.swift in Sources */,
 				B673837128E6FDB9007FD9D8 /* DismissAnimation.swift in Sources */,
 				B673838128E71D86007FD9D8 /* MainViewController + NavigationBarDelegate.swift in Sources */,

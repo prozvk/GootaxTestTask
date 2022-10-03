@@ -9,7 +9,13 @@ import UIKit
 
 class SearchBar: UIView {
     
-    let searchView: UIView = {
+    public var placeholder: String = "" {
+        didSet {
+            searchLabel.text = placeholder
+        }
+    }
+    
+    private lazy var searchView: UIView = {
         let label = UIView()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.searchBar
@@ -17,28 +23,24 @@ class SearchBar: UIView {
         return label
     }()
     
-    let searchLabel: UILabel = {
+    private lazy var searchLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Поиск товаров"
         label.textColor = UIColor.secondaryText1
         return label
     }()
     
-    let searchImage: UIView = {
+    private lazy var searchImage: UIView = {
         let view = UIImageView(image: UIImage(named: "search"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    
-    init() {
-        super.init(frame: CGRect())
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
+    private func setupLayout() {
         addSubview(searchView)
+        
         NSLayoutConstraint.activate([
             searchView.leftAnchor.constraint(equalTo: leftAnchor),
             searchView.topAnchor.constraint(equalTo: topAnchor),
@@ -59,6 +61,13 @@ class SearchBar: UIView {
             searchLabel.topAnchor.constraint(equalTo: searchView.topAnchor, constant: 5),
             searchLabel.bottomAnchor.constraint(equalTo: searchView.bottomAnchor, constant: -5)
         ])
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NavigationBarDelegate: class {
+protocol NavigationBarDelegate: AnyObject {
     
     func presentAddressSearchController()
     
